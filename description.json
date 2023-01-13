@@ -1,0 +1,17 @@
+{
+    "(Not so) smart API": {
+        "description": "You are mandated by Smart Transport & Logistics to test the latest API for their web service. One of these API points is used to obtain the access code to a storage facility. Recently, several thefts have occurred in this storage facility.\n\nDiscover the method used and get the access code to the warehouse (the flag).\n\nNote: It is not necessary to have remote command execution to get the flag.<br/><br/>Challenge proposed by : <img src='/themes/core/static/img/logo_amossys.svg' height='15em'>",
+        "category": "Web",
+        "flag": "ECW{Ceci_000__eSt_le_flag}",
+        "deploy": {
+            "dockername": "amossys/web",
+            "dockerbuild": "docker build . -t amossys/web",
+            "dockerrun_options": ["--rm", "-p", "8080", "--memory", "1g","--cpu-quota", 100000],
+            "solvetest": "TO IGNORE FOR NOW"
+        },
+        "files": false,
+        "score": {
+            "dynamic": {}
+        }
+    }
+}

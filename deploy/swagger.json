@@ -1,0 +1,61 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Smart Transport & Logistics API",
+    "description": "API to manage access to storage facility",
+    "version": "0.1.9"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1/",
+      "description": "Local server, for testing"
+    }
+  ],
+  "paths": {
+    "/api/check": {
+      "post": {
+        "summary": "Checks identity.",
+        "description": "Check if the staff member is known.",
+        "requestBody": {
+          "description": "Need `name` and `prenom` parameters to check identity.",
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nom": {
+                    "type": "string"
+                  },
+                  "prenom": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "nom",
+                  "prenom"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Tells if you are known"
+          }
+        }
+      }
+    },
+    "/api/facility": {
+      "get": {
+        "summary": "Returns the acccess code.",
+        "description": "Return the acccess code to storage facility. User need to be authenticated. The server will compare the provided password encoded in base64 in the header `X-API-Key` with the one securely saved in environnement variable `ACCESS_KEY`.",
+        "responses": {
+          "200": {
+            "description": "The acccess code or an error message."
+          }
+        }
+      }
+    }
+  }
+}
